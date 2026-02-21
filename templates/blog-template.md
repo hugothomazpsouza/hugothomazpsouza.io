@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[IMPACTFUL TITLE FOR THE ARTICLE]"
-date: 2026-02-21
+date: YYYY-MM-DD
 author: Hugo Souza
 tags: [Networking, Cloud, Automation, Tutorials]
 reading_time: "5 min read"
