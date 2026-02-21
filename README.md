@@ -69,6 +69,7 @@ I am a **Cloud Network Engineer**, passionate about architecting, automating, an
 
 ## 📰 Latest Articles
 
+- 🆕 [How to Build a Professional Portfolio with GitHub Pages](blog/2026-02-21-build-github-pages-portfolio.md)
 - 🔄 [How to structure a secure VPC on AWS](blog/2026-02-21-secure-aws-vpc.md)
 - 🚀 [Automating BGP with Python and Netmiko](blog/2026-02-15-bgp-automation.md)
 - 🌐 [Hybrid Migration: Connecting Cisco ASR with GCP Cloud Router](blog/2026-01-30-hybrid-migration-gcp.md)
