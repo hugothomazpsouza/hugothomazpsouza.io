@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" markdown="1">
   <h1>☁️ Cloud & Network Engineering Portfolio</h1>
   <p><strong>Technical Knowledge Base, Projects, and Procedures</strong></p>
   
@@ -17,7 +17,7 @@ I am a **Cloud and Network Engineer**, passionate about architecting, automating
 
 ## 🛠️ Technologies and Tools
 
-<div align="center">
+<div align="center" markdown="1">
   <a href="https://skillicons.dev">
     <img src="https://skillicons.dev/icons?i=aws,gcp,kubernetes,docker,terraform,ansible,linux,bash,python,git" />
   </a>
@@ -60,7 +60,7 @@ I am a **Cloud and Network Engineer**, passionate about architecting, automating
 
 ## 📊 GitHub Stats
 
-<div align="center">
+<div align="center" markdown="1">
   <img src="https://github-readme-stats-eight-theta.vercel.app/api?username=hugothomazpsouza&show_icons=true&theme=default&hide_border=true" alt="GitHub Stats" />
   <img src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=hugothomazpsouza&layout=compact&theme=default&hide_border=true" alt="Top Languages" />
 </div>
