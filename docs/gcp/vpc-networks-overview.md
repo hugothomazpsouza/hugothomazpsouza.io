@@ -98,4 +98,4 @@ For high-performance networking (like the Professional PCNE exam might query), r
 - [🔗 Google Cloud VPC Documentation](https://cloud.google.com/vpc/docs/vpc)
 - [🔗 Professional Cloud Network Engineer Exam Guide](https://cloud.google.com/certification/guides/cloud-network-engineer)
 
-[⬅️ Back to GCP Index](../README.md)
+[⬅️ Back to GCP Index](README.md)
