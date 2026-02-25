@@ -24,30 +24,7 @@ Specifically, you will learn how to:
 
 ## 🏗️ Architecture
 
-> _(Architecture diagram for the lab)_
-
-```mermaid
-graph TD
-    subgraph GCP ["Google Cloud Platform - us-west1"]
-        subgraph VPC ["Default VPC Network"]
-            FW["Firewall Rule<br>(allow-http-web-server<br>tcp:80)"]
-
-            subgraph TagWeb["Network Tag: web-server"]
-                BlueVM["VM Instance<br>'blue' (Nginx)"]
-            end
-
-            GreenVM["VM Instance<br>'green' (Nginx)"]
-            TestVM["VM Instance<br>'test-vm'"]
-
-            FW -.->|Allows Ingress HTTP| BlueVM
-            FW -.x|Blocks Ingress HTTP| GreenVM
-
-            TestVM -->|Internal HTTP| BlueVM
-            TestVM -->|Internal HTTP| GreenVM
-        end
-    end
-    Internet((Internet)) -->|External HTTP| FW
-```
+> _(Insert the diagram representing the deployed topology or architecture below)_
 
 ---
 
