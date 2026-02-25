@@ -5,6 +5,11 @@
 
 ## 📑 Documentation Index
 
+### Theory & Certification Prep
+
+- [📚 VPC Networks - Complete Study Guide](vpc-networks-overview.md)
+  _Core concepts, subnet modes, and performance metrics for the Professional Cloud Network Engineer exam._
+
 ### Hands-on Labs
 
 - [🛠️ Controlling Access to VPC Networks](hands-on/controlling-access-vpc-networks.md)

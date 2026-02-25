@@ -69,6 +69,7 @@ I am a **Cloud Network Engineer**, passionate about architecting, automating, an
 
 ## 📰 Latest Articles
 
+- 📚 [GCP Theory: VPC Networks - Complete Study Guide](docs/gcp/vpc-networks-overview.md)
 - 🆕 [GCP Lab: Controlling Access to VPC Networks](docs/gcp/hands-on/controlling-access-vpc-networks.md)
 - 🆕 [How to Build a Professional Portfolio with GitHub Pages](blog/2026-02-21-build-github-pages-portfolio.md)
 - 🔄 [How to structure a secure VPC on AWS](blog/2026-02-21-secure-aws-vpc.md)
