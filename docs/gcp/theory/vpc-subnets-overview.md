@@ -33,16 +33,51 @@ VPC networks support subnets with three stack types:
 
 > **Note:** Subnets with IPv6 ranges are supported on **custom mode** VPC networks only. You can change IPv4-only to dual-stack, or change a dual-stack (with external IPv6) back to IPv4-only. You cannot change the access type (internal or external) of an IPv6 subnet once created.
 
-### Subnet Purposes
+### Subnet Purposes & CLI Flags
 
-Subnets are assigned a "purpose", which generally cannot be changed after creation:
+Subnets are assigned a specific "purpose" when created, which generally cannot be changed afterward. Below is a quick-reference table for the CLI flags, followed by real-world example cases.
 
-- **Regular (PRIVATE/NONE):** Default type for VM instances.
-- **Private Service Connect:** Subnet used to publish managed services via PSC.
-- **Proxy-only:** Used with regional Envoy-based load balancers.
-- **Private NAT:** Reserved as the source range for Private NAT.
-- **Peer migration:** Used to migrate a Shared VPC service to PSC.
-- **Hybrid:** Logically extends to an on-premises network to migrate workloads without changing IPs.
+| Subnet Type                 | Exact CLI `--purpose` Value                          |
+| :-------------------------- | :--------------------------------------------------- |
+| **Regular**                 | `PRIVATE`                                            |
+| **Private Service Connect** | `PRIVATE_SERVICE_CONNECT`                            |
+| **Proxy-only**              | `REGIONAL_MANAGED_PROXY` (or `GLOBAL_MANAGED_PROXY`) |
+| **Private NAT**             | `PRIVATE_NAT`                                        |
+| **Peer migration**          | `PEER_MIGRATION`                                     |
+| **Hybrid**                  | `PRIVATE` _(See note below)_                         |
+
+#### Real-World Example Cases
+
+**1. Regular**
+
+- **Exact CLI Purpose:** `PRIVATE` _(Note: This is the default if you omit the `--purpose` flag entirely)._
+- **Example Case:** You are spinning up standard Compute Engine VMs, provisioning a Google Kubernetes Engine (GKE) cluster, or setting up Cloud SQL instances to run your company's main application backend.
+
+**2. Private Service Connect (PSC)**
+
+- **Exact CLI Purpose:** `PRIVATE_SERVICE_CONNECT`
+- **Example Case:** You built a SaaS application or a managed database service in your own "Producer" VPC. You want to allow your customers to securely connect to it from their own "Consumer" VPCs using internal private IPs. You create this subnet on your producer side to host the PSC NAT setup so the traffic can be routed securely.
+
+**3. Proxy-only**
+
+- **Exact CLI Purpose:** `REGIONAL_MANAGED_PROXY` (for regional load balancers) or `GLOBAL_MANAGED_PROXY` (for cross-region internal load balancers).
+- **Example Case:** You are setting up a Regional Internal Application Load Balancer to distribute traffic among your backend web servers. Because this load balancer is based on Envoy proxies managed by Google under the hood, those proxies need a dedicated IP space to live, terminate client HTTP(S) connections, and proxy the traffic to your backends.
+
+**4. Private NAT**
+
+- **Exact CLI Purpose:** `PRIVATE_NAT`
+- **Example Case:** Your company just acquired another business. You need to connect their on-premises network to your GCP VPC, but you both happen to use the exact same overlapping IP range (`10.0.0.0/16`). To allow the networks to talk to each other without routing conflicts, you create a Private NAT subnet to perform Network Address Translation between them.
+
+**5. Peer migration**
+
+- **Exact CLI Purpose:** `PEER_MIGRATION`
+- **Example Case:** You are migrating an existing managed service that currently relies on old-school VPC Network Peering over to the newer Private Service Connect model. This subnet strictly allocates the IP address for the PSC endpoint during that migration phase to ensure no other resources accidentally steal the required IP address.
+
+**6. Hybrid**
+
+- **Exact CLI Purpose:** `PRIVATE`
+- **Technical clarification:** While "Hybrid subnets" is a powerful GCP functionality for migrations, it does not actually have its own dedicated `--purpose` flag in the CLI. You actually create a standard Regular subnet (`--purpose=PRIVATE`) and then enable a feature called "Hybrid subnet routing" on it.
+- **Example Case:** You are doing a phased lift-and-shift migration of legacy on-premises VMware VMs into Compute Engine. By spanning a logical "Hybrid" subnet across your on-prem data center and GCP (connected via Cloud Interconnect), you can migrate a legacy VM to the cloud while keeping its hardcoded `192.168.1.50` IP address untouched.
 
 ---
 
